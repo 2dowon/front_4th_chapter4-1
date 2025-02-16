@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 프론트엔드 배포 파이프라인
 
-## Getting Started
+## 개요
 
-First, run the development server:
+![항해 4-1 drawio (3)|500](https://github.com/user-attachments/assets/f43aa772-bdf7-4646-a1ab-4e0d700c909f)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행되도록 합니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ (사전작업: Ubuntu 최신 버전 설치)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Checkout 액션을 사용해 코드 내려받기
+2. `npm ci` 명령어로 프로젝트 의존성 설치
+3. `npm run build` 명령어로 Next.js 프로젝트 빌드
+4. AWS 자격 증명 구성
+5. 빌드된 파일을 S3 버킷에 동기화
+6. CloudFront 캐시 무효화
 
-## Learn More
+## 주요 링크
 
-To learn more about Next.js, take a look at the following resources:
+- S3 버킷 웹사이트 엔드포인트: http://hanghae-bucket-2dowon.s3-website.ap-northeast-2.amazonaws.com/
+- CloudFrount 배포 도메인 이름: https://d2m38adm0fof6k.cloudfront.net/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 주요 개념
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GitHub Actions과 CI/CD 도구: _________
+- S3와 스토리지: _________
+- CloudFront와 CDN: _________
+- 캐시 무효화(Cache Invalidation): _________
+- Repository secret과 환경변수: _________
