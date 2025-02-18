@@ -2,8 +2,8 @@
 
 ## 개요
 
-![항해 4-1 drawio (3)|500](https://github.com/user-attachments/assets/f43aa772-bdf7-4646-a1ab-4e0d700c909f)
 
+![제목 없음-2025-02-18-2106](https://github.com/user-attachments/assets/6f95f4dd-52dd-4373-960a-0939e3d0be06)
 
 GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행되도록 합니다.
 
