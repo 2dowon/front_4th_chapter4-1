@@ -100,3 +100,38 @@
 - 환경 변수는 애플리케이션이 실행되는 환경에서 설정 값을 저장하고 관리하는 변수
 - `NODE_ENV=production`과 같이 애플리케이션의 실행 모드를 설정하는 데 사용
 - GitHub Actions에서는 env 키워드를 사용하여 설정
+
+</br>
+</br>
+
+# CDN과 성능 최적화
+
+Cloudfront CDN 도입한 결과 성능 최적화가 가능합니다.
+- 전체 페이지 로드 시간 3.46배 빠름
+- DOM 콘텐츠 로드 시간 2.43배 빠름
+- LightHouse 점수 향상
+
+
+### LightHouse
+
+- Cloudfront CDN 도입 후 'Best Practices(권장 사항)' 점수가 79점에서 100점으로 약 26.58% 향상
+
+|               S3              |          Cloudfront CDN 도입 후           |
+| :----------------------------------: | :----------------------------------: |
+| ![image](https://github.com/user-attachments/assets/f81353eb-7c00-447e-9f21-49d0f5d015e7)| ![image](https://github.com/user-attachments/assets/2bf23fed-d7eb-4597-a173-8c5edab1db55) |
+
+
+
+### Network
+
+Cloudfront CDN 도입 후 아래처럼 **페이지 로드 속도가 향상**되었음을 확인 가능
+- Transferred Data: 503kB에서 4.7kB로 99.07% 감소 (효율적인 캐싱 및 압축 효과)
+- Finish Time: 165ms에서 48ms로 70.91% 감소
+- DOMContentLoaded: 68ms에서 28ms로 58.82% 감소
+- Load Time: 135ms에서 39ms로 71.11% 감소
+
+|               S3              |          Cloudfront CDN 도입 후           |
+| :----------------------------------: | :----------------------------------: |
+| ![image](https://github.com/user-attachments/assets/9529d538-c1b8-4813-b72c-8ca2bf18c748) | ![image](https://github.com/user-attachments/assets/6a4a5a78-1b69-4b3f-a29d-bbcb45ba20c3) |
+
+
