@@ -1,19 +1,23 @@
 # 프론트엔드 배포 파이프라인
 
-## 개요
+## 'Deploy Next.js to S3 and invalidate CloudFront' 워크플로우
 
 ![제목 없음-2025-02-18-2106](https://github.com/user-attachments/assets/6f95f4dd-52dd-4373-960a-0939e3d0be06)
 
-GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행되도록 합니다.
+### 워크플로우 과정
 
-(사전작업: Ubuntu 최신 버전 설치)
+1. GitHub에서 제공하는 최신 버전의 Ubuntu 환경에서 실행
+2. Checkout 액션을 사용해 코드 내려받기
+3. `npm ci` 명령어로 프로젝트 의존성 설치
+4. `npm run build` 명령어로 Next.js 프로젝트 빌드
+5. AWS 자격 증명 구성
+6. 빌드된 파일을 S3 버킷에 동기화
+7. CloudFront 캐시 무효화
 
-1. Checkout 액션을 사용해 코드 내려받기
-2. `npm ci` 명령어로 프로젝트 의존성 설치
-3. `npm run build` 명령어로 Next.js 프로젝트 빌드
-4. AWS 자격 증명 구성
-5. 빌드된 파일을 S3 버킷에 동기화
-6. CloudFront 캐시 무효화
+### 워크플로우가 실행되는 경우
+
+- main 브랜치에 push가 발생할 때
+- Actions 탭에서 수동으로 실행할 때
 
 </br>
 
@@ -89,10 +93,10 @@ GitHub Actions에 워크플로우를 작성해 다음과 같이 배포가 진행
 
 - Repository Secret은 GitHub에서 제공하는 비밀 변수 저장소
 - API 키, 데이터베이스 비밀번호 등의 민감한 정보를 안전하게 저장하고 사용 가능
-- GitHub Actions에서 ${{ secrets.SECRET_NAME }} 형식으로 접근 가능
+- GitHub Actions에서 `${{ secrets.SECRET_NAME }}` 형식으로 접근 가능
 
 **환경 변수 (Environment Variables)**
 
 - 환경 변수는 애플리케이션이 실행되는 환경에서 설정 값을 저장하고 관리하는 변수
-- NODE_ENV=production과 같이 애플리케이션의 실행 모드를 설정하는 데 사용
+- `NODE_ENV=production`과 같이 애플리케이션의 실행 모드를 설정하는 데 사용
 - GitHub Actions에서는 env 키워드를 사용하여 설정
